@@ -1,0 +1,16 @@
+{
+  "name": "dropdesk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A small, focused browser dashboard for keeping daily tasks moving.",
+  "type": "module",
+  "engines": {
+    "node": "24.20.0",
+    "npm": ">=10.9.0 <11"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env scripts/server.mjs",
+    "start": "node --env-file-if-exists=.env scripts/server.mjs",
+    "test": "node --test"
+  }
+}

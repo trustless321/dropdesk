@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DropDesk is a calm dashboard for keeping daily tasks moving."
+    />
+    <title>DropDesk</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main id="app" class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Your focused workday</p>
+        <h1>DropDesk</h1>
+        <p class="intro">
+          A simple place to capture what needs to land and keep the details
+          close at hand.
+        </p>
+      </header>
+
+      <section class="dashboard-card" aria-labelledby="dashboard-title">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">Your desk</p>
+            <h2 id="dashboard-title">Task list</h2>
+          </div>
+          <div class="card-heading-actions">
+            <span class="status-pill" id="task-count" role="status" aria-live="polite">0 tasks</span>
+            <button class="button button-primary" id="new-task-button" type="button">
+              <span aria-hidden="true">＋</span> New task
+            </button>
+          </div>
+        </div>
+
+        <div class="task-editor" id="task-editor" hidden>
+          <div class="editor-heading">
+            <div>
+              <p class="eyebrow">Task details</p>
+              <h3 id="form-title">Add a task</h3>
+            </div>
+            <button class="button button-quiet" id="cancel-task-button" type="button">
+              Cancel
+            </button>
+          </div>
+
+          <p class="form-message" id="form-message" role="alert" hidden></p>
+
+          <form id="task-form">
+            <div class="form-grid">
+              <label class="field field-wide">
+                <span>Task title <span class="required-mark" aria-hidden="true">*</span></span>
+                <input id="task-title" name="title" type="text" required maxlength="120" autocomplete="off" placeholder="What needs to get done?" />
+              </label>
+
+              <label class="field">
+                <span>Deadline <span class="required-mark" aria-hidden="true">*</span></span>
+                <input id="task-deadline" name="deadline" type="date" required />
+              </label>
+
+              <label class="field">
+                <span>Project link</span>
+                <input id="task-project-link" name="projectLink" type="url" placeholder="https://..." autocomplete="url" />
+              </label>
+
+              <label class="field field-wide">
+                <span>Notes</span>
+                <textarea id="task-notes" name="notes" rows="4" maxlength="1000" placeholder="Add useful context, links, or the next step..."></textarea>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-primary" id="save-task-button" type="submit">Save task</button>
+              <span class="form-hint"><span class="required-mark" aria-hidden="true">*</span> Required fields</span>
+            </div>
+          </form>
+        </div>
+
+        <section class="digest-panel" aria-labelledby="digest-title">
+          <div class="digest-heading">
+            <div>
+              <p class="eyebrow">A quick handoff</p>
+              <h3 id="digest-title">Daily digest</h3>
+              <p class="digest-description">Copy overdue tasks and anything due within the next 24 hours.</p>
+            </div>
+            <button class="button button-secondary" id="copy-digest-button" type="button">
+              Copy urgent digest
+            </button>
+          </div>
+          <p class="digest-status" id="digest-status" role="status" aria-live="polite" hidden></p>
+          <pre class="digest-preview" id="digest-preview" tabindex="0" aria-label="Daily digest preview" hidden></pre>
+        </section>
+
+        <div class="task-list" id="task-list" aria-live="polite"></div>
+
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon" aria-hidden="true">✦</div>
+          <h3>A clear desk starts here.</h3>
+          <p>Add your first task with a deadline, project link, and notes.</p>
+          <button class="button button-secondary" id="empty-new-task-button" type="button">
+            Add your first task
+          </button>
+        </div>
+
+        <p class="storage-message" id="storage-message" role="status" aria-live="polite" hidden></p>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
