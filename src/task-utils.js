@@ -141,7 +141,7 @@ function formatDate(deadline) {
     return 'Unknown date';
   }
 
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat('en-GB', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
@@ -151,7 +151,7 @@ function formatDate(deadline) {
 function formatDigestDate(now) {
   const timestamp = toTimestamp(now);
   return Number.isFinite(timestamp)
-    ? new Intl.DateTimeFormat('en-US', {
+    ? new Intl.DateTimeFormat('en-GB', {
         day: 'numeric',
         month: 'long',
         weekday: 'long',

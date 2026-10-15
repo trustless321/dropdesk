@@ -81,7 +81,7 @@ if (dashboard) {
       return 'Unknown date';
     }
 
-    return new Date(deadlineTimestamp).toLocaleDateString(undefined, {
+    return new Date(deadlineTimestamp).toLocaleDateString('en-GB', {
       day: 'numeric',
       month: 'short',
       year: 'numeric',
