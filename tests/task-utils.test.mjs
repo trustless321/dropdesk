@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   URGENT_WINDOW_MS,
   formatCountdown,
+  formatDailyDigest,
   getDeadlineTimestamp,
   getTaskUrgency,
   getUrgentTasks,
@@ -83,4 +84,15 @@ test('getUrgentTasks returns only overdue and due-soon tasks in display order', 
     ['overdue', 'urgent'],
   );
   assert.deepEqual(tasks.map((task) => task.id), ['upcoming', 'urgent', 'overdue', 'invalid']);
+});
+
+test('formatDailyDigest renders dates in English day-month-year order', () => {
+  const now = new Date(2026, 9, 15, 12);
+  const digest = formatDailyDigest(
+    [{ title: 'Review the launch plan', deadline: '2026-10-15', projectLink: '', notes: '' }],
+    now,
+  );
+
+  assert.match(digest, /DropDesk daily digest — Thursday, 15 October 2026/);
+  assert.match(digest, /Due 15 Oct 2026/);
 });

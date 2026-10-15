@@ -5,8 +5,10 @@ import test from 'node:test';
 const indexHtml = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 
 test('the browser shell has the DropDesk identity and app entrypoint', () => {
+  assert.match(indexHtml, /<html lang="en">/);
   assert.match(indexHtml, /<title>DropDesk<\/title>/);
   assert.match(indexHtml, /id="app"/);
   assert.match(indexHtml, /src="\/src\/main\.js"/);
   assert.match(indexHtml, /href="\/src\/style\.css"/);
+  assert.match(indexHtml, /id="task-deadline"[^>]*type="date"[^>]*lang="en"/);
 });
